@@ -47,7 +47,7 @@ function InterviewSummary() {
       </button>
 
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/dashboard")}
         style={{ padding: "10px 20px" }}
       >
         Back to Dashboard

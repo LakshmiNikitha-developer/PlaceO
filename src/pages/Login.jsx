@@ -1,55 +1,76 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
+export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Placeholder logic: you can replace with real auth API
-    if (email && password) {
-      navigate("/dashboard"); // after login, go to dashboard
-    } else {
-      alert("Please enter email and password!");
+
+    const { email, password } = formData;
+
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
     }
+
+    if (password.length < 6) {
+      alert("Invalid password");
+      return;
+    }
+
+    // Demo success (replace with API later)
+    console.log("Login Data:", formData);
+    alert("Login successful ✅");
+
+    // Redirect to dashboard
+    navigate("/dashboard");
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Login to PLACEO</h2>
+    <div className="auth-container">
+      <div className="auth-box glass">
+        <h2>Welcome Back to PLACEO</h2>
+
         <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <label>Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="login-btn">Login</button>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+          <button type="submit" className="auth-btn">
+            Login
+          </button>
         </form>
-        <p>
-          Don't have an account? <span className="signup-link" onClick={() => navigate("/signup")}>Sign Up</span>
+
+        <p className="auth-link">
+          Don’t have an account? <Link to="/signup">Sign up</Link>
         </p>
       </div>
     </div>
   );
-};
-
-export default Login;
+}

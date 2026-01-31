@@ -28,6 +28,7 @@ import StartTest from "./pages/StartTest";
 import TakeTest from "./pages/TakeTest";
 import TestSummary from "./pages/TestSummary";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 
 export default function App() {
@@ -62,6 +63,7 @@ export default function App() {
       <Route path="/interview-summary" element={<InterviewSummary />} />
 
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
 
 
     </Routes>
