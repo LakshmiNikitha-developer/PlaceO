@@ -1,0 +1,47 @@
+.mock-container {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.mock-box {
+  display: flex;
+  border: 1px solid #ddd;
+  height: 300px;
+}
+
+.mock-left {
+  width: 35%;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.radio-item {
+  display: block;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.mock-right {
+  width: 65%;
+  padding: 20px;
+}
+
+.mock-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.cancel {
+  padding: 8px 16px;
+  background: #ccc;
+  border: none;
+}
+
+.create {
+  padding: 8px 16px;
+  background: green;
+  color: white;
+  border: none;
+}

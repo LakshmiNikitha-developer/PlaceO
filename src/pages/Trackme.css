@@ -1,0 +1,104 @@
+/* PAGE */
+.track-container {
+  padding: 50px;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  background: linear-gradient(135deg, #1e0f3f, #3b0f70);
+  color: white;
+}
+
+
+.track-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ff7f50;
+}
+
+/* CARD */
+.track-card {
+  background: linear-gradient(135deg, #d4d4d4, #404040);
+  box-shadow: 0 0 30px rgba(200, 200, 200, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 35px;
+  
+}
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color:#1e0f3f
+}
+
+/* PROFILE */
+.profile-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.profile-value {
+  font-weight: 600;
+}
+
+/* TEST HISTORY */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+/* GRAPH */
+.graph {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+  height: 200px;
+}
+
+.bar-container {
+  text-align: center;
+}
+
+.bar {
+  width: 38px;
+  background: linear-gradient(180deg, #ff7f50, #7b5fff);
+  border-radius: 8px 8px 0 0;
+  transition: 0.3s ease;
+}
+
+.bar:hover {
+  transform: scaleY(1.05);
+}
+
+.bar-label {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+}

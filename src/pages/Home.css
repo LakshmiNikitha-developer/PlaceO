@@ -1,0 +1,98 @@
+.home-container {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1e0f3f, #3b0f70);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: #ff7f50;
+}
+
+/* Intro content */
+.intro-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.intro-title {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.intro-subtitle {
+  font-size: 1.5rem;
+  margin: 20px 0 40px 0;
+  z-index: 1;
+}
+
+/* Animated curvy line */
+.animated-line {
+  width: 500px;
+  height: 50px;
+  margin: 10px 0 30px 0;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawLine 4s infinite alternate;
+}
+
+@keyframes drawLine {
+  0% {
+    stroke-dashoffset: 800;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Get Started button */
+.get-started-btn {
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ff7f50, #7b5fff);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.get-started-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
