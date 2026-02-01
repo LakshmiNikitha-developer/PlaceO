@@ -1,6 +1,7 @@
-// Mockinterview.jsx
+// MockInterview.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./MockInterview.css";
 
 const questions = [
   "Tell me about yourself.",
@@ -55,26 +56,19 @@ function MockInterview() {
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>Mock Interview</h2>
-      <p>Time left: {time}s</p>
+    <div className="mock-interview-container">
+      <div className="interview-header">
+        <h2>🎤 Mock Interview</h2>
+        <span className="timer">⏱ {time}s</span>
+      </div>
 
-      <div
-        style={{
-          border: "1px solid #ccc",
-          height: "300px",
-          padding: "10px",
-          overflowY: "auto",
-          marginBottom: "10px"
-        }}
-      >
+      <div className="mock-interview-box">
         {chat.map((msg, index) => (
           <div
             key={index}
-            style={{
-              textAlign: msg.from === "bot" ? "left" : "right",
-              margin: "5px 0"
-            }}
+            className={`chat-message ${
+              msg.from === "bot" ? "chat-bot" : "chat-user"
+            }`}
           >
             <b>{msg.from === "bot" ? "Interviewer" : "You"}:</b>{" "}
             {msg.text}
@@ -84,21 +78,21 @@ function MockInterview() {
 
       <textarea
         rows="4"
-        style={{ width: "100%" }}
+        className="answer-box"
         placeholder="Type your answer..."
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
       />
 
-      <br />
-      <br />
-
-      <button onClick={handleNext}>
-        {current + 1 === questions.length ? "Submit Interview" : "Next"}
-      </button>
+      <div className="interview-actions">
+        <button onClick={handleNext}>
+          {current + 1 === questions.length
+            ? "Submit Interview"
+            : "Next Question"}
+        </button>
+      </div>
     </div>
   );
 }
 
 export default MockInterview;
-

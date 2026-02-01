@@ -1,77 +1,66 @@
-
 import React from "react";
-import "./Trackme.css";
+import "./TrackMe.css";
 
-function Trackme() {
+export default function TrackMe() {
   const user = {
     name: "Nikitha",
-    email: "nikitha@gmail.com",
-    joined: "10 Jan 2026",
     level: "Intermediate",
+    joined: "Jan 2026",
   };
 
-  const testHistory = [
-    { date: "29 Jan", score: 65 },
-    { date: "30 Jan", score: 72 },
-    { date: "31 Jan", score: 78 },
-    { date: "01 Feb", score: 82 },
+  const stats = [
+    { title: "Today's Progress", value: "1 / 3", icon: "📅" },
+    { title: "Weekly Consistency", value: "68%", icon: "📊" },
+    { title: "Current Streak", value: "5 Days", icon: "🔥" },
+    { title: "Total Tests Taken", value: "12", icon: "🧪" },
+  ];
+
+  const weeklyData = [
+    { day: "Sun", percent: 70 },
+    { day: "Mon", percent: 50 },
+    { day: "Tue", percent: 80 },
+    { day: "Wed", percent: 30 },
+    { day: "Thu", percent: 60 },
+    { day: "Fri", percent: 75 },
+    { day: "Today", percent: 40 },
   ];
 
   return (
-    <div className="track-container">
-      <h2 className="track-title">📊 Track Me</h2>
-
-      {/* USER PROFILE */}
-      <div className="track-card profile-card">
-        <h3 className="section-title">👤 User Profile</h3>
-
-        <div className="profile-row">
-          <span className="profile-label">Name</span>
-          <span className="profile-value">{user.name}</span>
-        </div>
-
-        <div className="profile-row">
-          <span className="profile-label">Email</span>
-          <span className="profile-value">{user.email}</span>
-        </div>
-
-        <div className="profile-row">
-          <span className="profile-label">Joined</span>
-          <span className="profile-value">{user.joined}</span>
-        </div>
-
-        <div className="profile-row">
-          <span className="profile-label">Level</span>
-          <span className="profile-value">{user.level}</span>
-        </div>
+    <div className="track-wrapper">
+      {/* HEADER */}
+      <div className="track-header glass">
+        <h2>Welcome back, {user.name} 👋</h2>
+        <p>
+          Level: <b>{user.level}</b> • Joined: {user.joined}
+        </p>
       </div>
 
-      {/* TEST HISTORY */}
-      <div className="track-card">
-        <h3 className="section-title">📝 Test History</h3>
-
-        <div className="history-list">
-          {testHistory.map((t, i) => (
-            <div className="history-item" key={i}>
-              <span>{t.date} – Mock Test</span>
-              <b>{t.score}%</b>
-            </div>
-          ))}
-        </div>
+      {/* STATS */}
+      <div className="stats-grid">
+        {stats.map((item, i) => (
+          <div className="stat-card glass" key={i}>
+            <span className="stat-icon">{item.icon}</span>
+            <h3>{item.value}</h3>
+            <p>{item.title}</p>
+          </div>
+        ))}
       </div>
 
-      {/* PERFORMANCE GRAPH */}
-      <div className="track-card">
-        <h3 className="section-title">📈 Performance Graph</h3>
+      {/* WEEKLY OVERVIEW */}
+      <div className="weekly-section glass">
+        <h3>Weekly Performance Overview</h3>
 
-        <div className="graph">
-          {testHistory.map((t, i) => (
-            <div key={i} className="bar-container">
-              <div
-                className="bar"
-                style={{ height: `${t.score * 1.3}px` }}
-              ></div>
-              <div className="bar-label">{t.date}</div>
+        <div className="weekly-bars">
+          {weeklyData.map((d, i) => (
+            <div className="day-row" key={i}>
+              <span className="day-label">{d.day}</span>
+              <div className="bar-bg">
+                <div
+                  className="bar-fill"
+                  style={{ width: `${d.percent}%` }}
+                ></div>
+              </div>
+              <span className="percent">{d.percent}%</span>
             </div>
           ))}
         </div>
@@ -79,6 +68,3 @@ function Trackme() {
     </div>
   );
 }
-
-export default Trackme;
-

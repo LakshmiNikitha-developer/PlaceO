@@ -1,104 +1,132 @@
-/* PAGE */
-.track-container {
-  padding: 50px;
+.track-wrapper {
   min-height: 100vh;
-  font-family: "Segoe UI", Arial, sans-serif;
-
+  padding: 50px 6%;
   background: linear-gradient(135deg, #1e0f3f, #3b0f70);
   color: white;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* GLASS EFFECT */
+.glass {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+}
 
-.track-title {
-  font-size: 28px;
-  margin-bottom: 30px;
+/* HEADER */
+.track-header {
+  padding: 35px 40px;
+  margin-bottom: 40px;
+}
+
+.track-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
   color: #ff7f50;
 }
 
-/* CARD */
-.track-card {
-  background: linear-gradient(135deg, #d4d4d4, #404040);
-  box-shadow: 0 0 30px rgba(200, 200, 200, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  padding: 30px;
-  margin-bottom: 35px;
-  
+.track-header p {
+  opacity: 0.9;
+  font-size: 1.05rem;
 }
 
-/* SECTION TITLE */
-.section-title {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color:#1e0f3f
-}
-
-/* PROFILE */
-.profile-row {
+/* STATS GRID */
+.stats-grid {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
 }
 
-.profile-row:last-child {
-  border-bottom: none;
+.stat-card {
+  padding: 30px 20px;
+  text-align: center;
+  transition: 0.35s ease;
 }
 
-.profile-label {
-  color: #555;
-  font-weight: 500;
+.stat-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(45deg, #7b5fff, #ff7f50);
 }
 
-.profile-value {
-  font-weight: 600;
+.stat-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
 }
 
-/* TEST HISTORY */
-.history-list {
+.stat-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* WEEKLY SECTION */
+.weekly-section {
+  padding: 40px;
+}
+
+.weekly-section h3 {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #ff7f50;
+}
+
+.weekly-bars {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.history-item {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 16px;
+.day-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 50px;
+  align-items: center;
+  gap: 15px;
 }
 
-.history-item:last-child {
-  border-bottom: none;
+.day-label {
+  font-size: 0.95rem;
 }
 
-/* GRAPH */
-.graph {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 24px;
-  height: 200px;
+.bar-bg {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.bar-container {
-  text-align: center;
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7b5fff, #ff7f50);
+  border-radius: 20px;
+  transition: width 0.6s ease;
 }
 
-.bar {
-  width: 38px;
-  background: linear-gradient(180deg, #ff7f50, #7b5fff);
-  border-radius: 8px 8px 0 0;
-  transition: 0.3s ease;
+.percent {
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
-.bar:hover {
-  transform: scaleY(1.05);
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.bar-label {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #555;
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .track-header h2 {
+    font-size: 1.8rem;
+  }
 }

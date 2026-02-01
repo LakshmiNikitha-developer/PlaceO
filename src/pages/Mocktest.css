@@ -1,47 +1,121 @@
+/* PAGE WRAPPER */
 .mock-container {
-  padding: 30px;
+  min-height: 100vh;
+  padding: 40px 60px;
   font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #1e0f3f, #3b0f70);
 }
 
+/* HEADING */
+.mock-container h2 {
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  color: #ff7f50;
+}
+
+/* MAIN BOX */
 .mock-box {
   display: flex;
-  border: 1px solid #ddd;
-  height: 300px;
+  gap: 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
 }
 
+/* LEFT SIDE */
 .mock-left {
   width: 35%;
-  border-right: 1px solid #ddd;
-  padding: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  padding-right: 25px;
 }
 
+/* RADIO ITEMS */
 .radio-item {
-  display: block;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 18px;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
-.mock-right {
-  width: 65%;
-  padding: 20px;
+.radio-item input {
+  accent-color: #ff7f50;
 }
 
+/* RIGHT SIDE */
+.mock-right {
+  width: 65%;
+  padding-left: 25px;
+}
+
+.mock-right h3 {
+  color: #ff7f50;
+  margin-bottom: 15px;
+}
+
+.mock-right p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* BUTTONS */
 .mock-buttons {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
-  gap: 10px;
+  margin-top: 30px;
+  gap: 15px;
 }
 
-.cancel {
-  padding: 8px 16px;
-  background: #ccc;
+.mock-buttons button {
+  padding: 12px 26px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
   border: none;
+  transition: 0.3s ease;
 }
 
-.create {
-  padding: 8px 16px;
-  background: green;
+/* CANCEL */
+.mock-buttons button:first-child {
+  background: rgba(255, 255, 255, 0.25);
   color: white;
-  border: none;
+}
+
+.mock-buttons button:first-child:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* CREATE */
+.mock-buttons button:last-child {
+  background: linear-gradient(45deg, #ff7f50, #7b5fff);
+  color: white;
+}
+
+.mock-buttons button:last-child:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .mock-box {
+    flex-direction: column;
+  }
+
+  .mock-left,
+  .mock-right {
+    width: 100%;
+    
+    padding: 0;
+    border: none;
+  }
 }

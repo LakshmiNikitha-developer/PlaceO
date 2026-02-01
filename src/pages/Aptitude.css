@@ -1,0 +1,63 @@
+/* Wrapper */
+.aptitude-wrapper {
+  min-height: 100vh;
+  padding: 100px 6%;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+}
+
+/* Title */
+.page-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ff8a5c;
+}
+
+/* Subtitle */
+.page-subtitle {
+  text-align: center;
+  color: #c7c7e2;
+  max-width: 650px;
+  margin: 0 auto 50px;
+  font-size: 1rem;
+}
+
+/* Grid */
+.aptitude-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* Topic Card (overriding base card look if needed) */
+.topic-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.topic-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Topic title */
+.topic-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+/* Optional description text */
+.topic-card p {
+  font-size: 0.9rem;
+  color: #d7d7f5;
+}

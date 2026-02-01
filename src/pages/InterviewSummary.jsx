@@ -1,10 +1,12 @@
+// InterviewSummary.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./MockInterview.css";
 
 function InterviewSummary() {
   const navigate = useNavigate();
 
-  // Dummy AI feedback (later comes from backend/AI)
+  // Dummy AI feedback (later comes from backend / AI)
   const feedback = {
     score: 7,
     strengths: [
@@ -18,40 +20,36 @@ function InterviewSummary() {
   };
 
   return (
-    <div style={{ padding: "40px", fontFamily: "Arial" }}>
-      <h2>Mock Interview Feedback 🤖</h2>
+    <div className="summary-container">
+      <div className="summary-card">
+        <h2>Mock Interview Feedback 🤖</h2>
 
-      <h3>Score: {feedback.score} / 10</h3>
+        <h3>Score: {feedback.score} / 10</h3>
 
-      <h4>Strengths</h4>
-      <ul>
-        {feedback.strengths.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+        <h3>Strengths</h3>
+        <ul>
+          {feedback.strengths.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
 
-      <h4>Areas to Improve</h4>
-      <ul>
-        {feedback.improvements.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+        <h3>Areas to Improve</h3>
+        <ul>
+          {feedback.improvements.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
 
-      <br />
+        <div className="summary-actions">
+          <button onClick={() => navigate("/trackme")}>
+            Track My Progress
+          </button>
 
-      <button
-        onClick={() => navigate("/trackme")}
-        style={{ padding: "10px 20px", marginRight: "10px" }}
-      >
-        Track My Progress
-      </button>
-
-      <button
-        onClick={() => navigate("/dashboard")}
-        style={{ padding: "10px 20px" }}
-      >
-        Back to Dashboard
-      </button>
+          <button onClick={() => navigate("/dashboard")}>
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
