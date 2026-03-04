@@ -1,3 +1,5 @@
+const loggedUser = JSON.parse(localStorage.getItem("userInfo"));
+
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
@@ -13,20 +15,47 @@ export default function Dashboard() {
   const [input, setInput] = useState("");
   const chatEndRef = useRef(null);
 
-  const sendMessage = () => {
-    if (!input.trim()) return;
+const sendMessage = () => {
+  if (!input.trim()) return;
 
-    const userMsg = { sender: "user", text: input };
+  const userMsg = { sender: "user", text: input };
 
-    // Temporary demo reply – AI engineer will replace this logic
-    const botMsg = {
-      sender: "bot",
-      text: "🤖 Thanks for your question! AI-powered answers will be available here very soon."
-    };
-
-    setMessages(prev => [...prev, userMsg, botMsg]);
-    setInput("");
+  const botMsg = {
+    sender: "bot",
+    text: "🤖 Thanks for your question! AI-powered answers coming soon.",
   };
+
+  // ✅ Safe activity tracking
+  let activity = JSON.parse(localStorage.getItem("activity"));
+
+  if (!activity) {
+    activity = { chats: 0 };
+  }
+
+  activity.chats += 1;
+  localStorage.setItem("activity", JSON.stringify(activity));
+
+  setMessages((prev) => [...prev, userMsg, botMsg]);
+  setInput("");
+};
+
+const handleFileUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const userMsg = {
+    sender: "user",
+    text: `📎 Uploaded file: ${file.name}`,
+  };
+
+  const botMsg = {
+    sender: "bot",
+    text: "📁 File received! Processing coming soon.",
+  };
+
+  setMessages((prev) => [...prev, userMsg, botMsg]);
+};
+
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -57,7 +86,7 @@ export default function Dashboard() {
         <div className="chat-input">
           <label className="upload-icon">
     📎
-    <input type="file" hidden />
+    <input type="file" hidden onChange={handleFileUpload} />
   </label>
           <input
             type="text"

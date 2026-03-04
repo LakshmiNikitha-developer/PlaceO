@@ -7,38 +7,57 @@ export default function Login() {
 
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+  e.preventDefault();
 
-    const { email, password } = formData;
+  const { email, password } = formData;
 
-    if (!email || !password) {
-      alert("Please fill all fields");
+  if (!email || !password) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    console.log("Response status:", response.status);
+
+    const data = await response.json();
+    console.log("Response data:", data);
+
+    if (!response.ok) {
+      alert(data.message || "Login failed");
       return;
     }
 
-    if (password.length < 6) {
-      alert("Invalid password");
-      return;
-    }
+    // Save user
+    localStorage.setItem("userInfo", JSON.stringify(data.user));
 
-    // Demo success (replace with API later)
-    console.log("Login Data:", formData);
     alert("Login successful ✅");
-
-    // Redirect to dashboard
     navigate("/dashboard");
-  };
+
+  } catch (error) {
+    console.error("FETCH ERROR:", error);
+    alert("Backend not reachable. Check server & port.");
+  }
+};
+
 
   return (
     <div className="auth-container">

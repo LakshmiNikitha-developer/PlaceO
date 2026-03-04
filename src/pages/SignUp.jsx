@@ -9,21 +9,22 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     const { name, email, password, confirmPassword } = formData;
 
+    // ---------- Frontend validations ----------
     if (!name || !email || !password || !confirmPassword) {
       alert("Please fill all fields");
       return;
@@ -39,12 +40,33 @@ export default function Signup() {
       return;
     }
 
-    // Demo success
-    console.log("Signup Data:", formData);
-    alert("Account created successfully 🎉");
+    // ---------- Backend + Database connection ----------
+    try {
+      const response = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      });
 
-    // Redirect to login
-    navigate("/login");
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Signup failed");
+        return;
+      }
+
+      alert("Account created successfully 🎉");
+      navigate("/login");
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert("Server not responding. Please try again later.");
+    }
   };
 
   return (
