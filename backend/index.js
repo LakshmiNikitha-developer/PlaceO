@@ -14,11 +14,40 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log("📌 Initializing routes...");
+
 // Routes
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/tests", require("./routes/testsRoutes"));
-app.use("/api/results", require("./routes/resultsRoutes"));
-app.use("/api/seed", require("./routes/seedRoutes"));
+try {
+  const userRoutes = require("./routes/userRoutes");
+  console.log("✅ Loaded: userRoutes");
+  app.use("/api/users", userRoutes);
+} catch (err) {
+  console.error("❌ Error loading userRoutes:", err.message);
+}
+
+try {
+  const testsRoutes = require("./routes/testsRoutes");
+  console.log("✅ Loaded: testsRoutes");
+  app.use("/api/tests", testsRoutes);
+} catch (err) {
+  console.error("❌ Error loading testsRoutes:", err.message);
+}
+
+try {
+  const resultsRoutes = require("./routes/resultsRoutes");
+  console.log("✅ Loaded: resultsRoutes");
+  app.use("/api/results", resultsRoutes);
+} catch (err) {
+  console.error("❌ Error loading resultsRoutes:", err.message);
+}
+
+try {
+  const seedRoutes = require("./routes/seedRoutes");
+  console.log("✅ Loaded: seedRoutes");
+  app.use("/api/seed", seedRoutes);
+} catch (err) {
+  console.error("❌ Error loading seedRoutes:", err.message);
+}
 
 // Health check route
 app.get("/", (req, res) => {

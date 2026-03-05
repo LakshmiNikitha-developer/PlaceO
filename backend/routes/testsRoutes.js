@@ -8,10 +8,19 @@ router.get("/", async (req, res) => {
     const { category, subcategory, difficulty } = req.query;
     let filter = { isPublished: true };
 
+    console.log("Query params:", { category, subcategory, difficulty });
+
     if (category) filter.category = category;
     if (subcategory) filter.subcategory = subcategory;
 
-    const tests = await Test.find(filter).select("-questions");
+    console.log("Filter:", filter);
+
+    // Include questions only when fetching a specific subcategory
+    const selectFields = subcategory ? "" : "-questions";
+
+    const tests = await Test.find(filter).select(selectFields);
+
+    console.log(`Found ${tests.length} tests matching filter`);
 
     res.json({
       total: tests.length,

@@ -14,7 +14,40 @@ const testSchema = new mongoose.Schema(
     },
     subcategory: {
       type: String,
-      enum: ["quant", "verbal", "reasoning", "logical", "probability", "amazon", "google", "tcs", "deloitte"],
+      enum: [
+        "quant",
+        "verbal",
+        "reasoning",
+        "logical",
+        "probability",
+        // interview companies
+        "amazon",
+        "google",
+        "microsoft",
+        "zoho",
+        "tcs",
+        "infosys",
+        "wipro",
+        "accenture",
+        "cognizant",
+        "capgemini",
+        "deloitte",
+        // coding topics
+        "java",
+        "python",
+        "c",
+        "dsa",
+        "algorithms",
+        "competitive",
+        // interview languages/topics
+        "python-interview",
+        "html-interview",
+        "ds-interview",
+        "react-interview",
+        "node-interview",
+        "angular-interview",
+        "sql-interview",
+      ],
     },
     duration: {
       type: Number,
@@ -28,13 +61,17 @@ const testSchema = new mongoose.Schema(
     questions: [
       {
         questionText: String,
-        options: [String],
-        correctAnswer: String,
+        options: [String], // For MCQ
+        correctAnswer: String, // For MCQ
+        answer: String, // For Q&A (interview format)
         explanation: String,
         difficulty: {
           type: String,
           enum: ["easy", "medium", "hard"],
         },
+        topic: String,
+        category: String,
+        subcategory: String,
       },
     ],
     passingScore: {

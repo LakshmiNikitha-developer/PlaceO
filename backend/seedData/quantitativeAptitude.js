@@ -340,21 +340,7 @@ const quantitativeAptitudeQuestions = [
   },
 
   // Probability
-  {
-    questionText: "What is the probability of selecting 2 spades from a pack of 52 cards?",
-    options: [
-      "A) 78/1275",
-      "B) 100/1275",
-      "C) 150/1275",
-      "D) 200/1275"
-    ],
-    correctAnswer: "A) 78/1275",
-    explanation: "Total ways of selecting 2 cards = 52C2 = 1275. Ways of selecting 2 spades = 13C2 = 78. Probability = 78/1275",
-    difficulty: "hard",
-    category: "aptitude",
-    subcategory: "quant",
-    topic: "Probability"
-  }
+  // (probability items have been moved to a dedicated file)
 ];
 
 module.exports = quantitativeAptitudeQuestions;
