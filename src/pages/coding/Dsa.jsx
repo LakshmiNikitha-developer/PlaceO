@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+// helper to render question list
 function renderQuestions(questions) {
   return questions.map((q, i) => {
     const text = q.question || q.questionText || "";
@@ -30,11 +31,11 @@ function renderQuestions(questions) {
   });
 }
 
-export default function Verbal() {
+export default function Dsa() {
   const [questions, setQuestions] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/tests?category=aptitude&subcategory=verbal")
+    fetch("http://localhost:3000/api/tests?category=coding&subcategory=dsa")
       .then((res) => res.json())
       .then((data) => {
         if (data.tests && data.tests.length > 0) {
@@ -44,18 +45,18 @@ export default function Verbal() {
         }
       })
       .catch((err) => {
-        console.error("Error fetching verbal questions", err);
+        console.error("Failed to load questions", err);
         setQuestions([]);
       });
   }, []);
 
   return (
     <div style={{ padding: "30px" }}>
-      <h2>Verbal Ability</h2>
+      <h2>Data Structures</h2>
       {questions === null ? (
         <p>Loading...</p>
       ) : questions.length === 0 ? (
-        <p>No verbal questions available yet.</p>
+        <p>No questions available yet. Please check again later.</p>
       ) : (
         renderQuestions(questions)
       )}

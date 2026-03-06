@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./InterviewPage.css";
 
-export default function Amazon() {
+export default function Wipro() {
   const [questions, setQuestions] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,7 +12,7 @@ export default function Amazon() {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:3000/api/tests?category=interview&subcategory=amazon`
+          `http://localhost:3000/api/tests?category=interview&subcategory=wipro`
         );
         const data = await response.json();
         
@@ -44,7 +44,7 @@ export default function Amazon() {
 
   return (
     <div className="interview-container">
-      <h1>Amazon Interview Questions</h1>
+      <h1>Wipro Interview Questions</h1>
       <p className="count">Total Questions: {questions.length}</p>
 
       <div className="questions-list">

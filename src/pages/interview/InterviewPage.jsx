@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./InterviewPage.css";
 
-export default function Amazon() {
+export default function InterviewPage() {
+  const { company } = useParams();
   const [questions, setQuestions] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ export default function Amazon() {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:3000/api/tests?category=interview&subcategory=amazon`
+          `http://localhost:3000/api/tests?category=interview&subcategory=${company}`
         );
         const data = await response.json();
         
@@ -27,8 +29,10 @@ export default function Amazon() {
       }
     };
 
-    fetchQuestions();
-  }, []);
+    if (company) {
+      fetchQuestions();
+    }
+  }, [company]);
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -44,7 +48,7 @@ export default function Amazon() {
 
   return (
     <div className="interview-container">
-      <h1>Amazon Interview Questions</h1>
+      <h1>{company.charAt(0).toUpperCase() + company.slice(1)} Interview Questions</h1>
       <p className="count">Total Questions: {questions.length}</p>
 
       <div className="questions-list">

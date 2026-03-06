@@ -12,15 +12,15 @@ export default function Interview() {
       </p>
 
       <div className="interview-grid">
-        <TopicCard title="TCS" link="/interview/TCS" />
-        <TopicCard title="Infosys" link="/interview/Infosys" />
-        <TopicCard title="Wipro" link="/interview/Wipro" />
-        <TopicCard title="Accenture" link="/interview/Accenture" />
-        <TopicCard title="Cognizant" link="/interview/Cognizant" />
-        <TopicCard title="Capgemini" link="/interview/Capgemini" />
-        <TopicCard title="Amazon" link="/interview/Amazon" />
-        <TopicCard title="Google" link="/interview/Google" />
-        <TopicCard title="Microsoft" link="/interview/Microsoft" />
+        <TopicCard title="TCS" link="/interview/tcs" />
+        <TopicCard title="Infosys" link="/interview/infosys" />
+        <TopicCard title="Wipro" link="/interview/wipro" />
+        <TopicCard title="Accenture" link="/interview/accenture" />
+        <TopicCard title="Cognizant" link="/interview/cognizant" />
+        <TopicCard title="Capgemini" link="/interview/capgemini" />
+        <TopicCard title="Amazon" link="/interview/amazon" />
+        <TopicCard title="Google" link="/interview/google" />
+        <TopicCard title="Microsoft" link="/interview/microsoft" />
       </div>
     </div>
   );

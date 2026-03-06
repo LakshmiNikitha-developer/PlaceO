@@ -57,7 +57,9 @@
 }
 
 /* Optional description text */
-.topic-card p {
+.topic-card p,
+.topic-card .card-subtitle {
   font-size: 0.9rem;
   color: #d7d7f5;
 }
+

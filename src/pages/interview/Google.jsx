@@ -1,19 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./InterviewPage.css";
 
 export default function Google() {
+  const [questions, setQuestions] = useState([]);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `http://localhost:3000/api/tests?category=interview&subcategory=google`
+        );
+        const data = await response.json();
+        
+        if (data.tests && data.tests.length > 0) {
+          setQuestions(data.tests[0].questions || []);
+        }
+      } catch (err) {
+        setError("Failed to load interview questions");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  if (loading) {
+    return <div className="interview-container"><p>Loading questions...</p></div>;
+  }
+
+  if (error) {
+    return <div className="interview-container"><p className="error">{error}</p></div>;
+  }
+
   return (
-    <div style={{ padding: "30px" }}>
-      <h2>Google Interview Questions</h2>
+    <div className="interview-container">
+      <h1>Google Interview Questions</h1>
+      <p className="count">Total Questions: {questions.length}</p>
 
-      <p><b>Q1.</b> What is Big-O notation?</p>
-      <p><b>Answer:</b> It describes time and space complexity.</p>
-      <p><b>Explanation:</b> Big-O shows how an algorithm scales with input size.</p>
+      <div className="questions-list">
+        {questions.length > 0 ? (
+          questions.map((q, index) => (
+            <div
+              key={index}
+              className="question-card"
+              onClick={() => toggleExpand(index)}
+            >
+              <div className="question-header">
+                <h3 className="question-text">
+                  Q{index + 1}. {q.questionText}
+                </h3>
+                <span className={`expand-icon ${expandedIndex === index ? "active" : ""}`}>
+                  {expandedIndex === index ? "−" : "+"}
+                </span>
+              </div>
 
-      <hr />
-
-      <p><b>Q2.</b> Difference between Array and Linked List?</p>
-      <p><b>Answer:</b> Arrays have contiguous memory, Linked Lists do not.</p>
-      <p><b>Explanation:</b> Linked lists allow dynamic size but slower access.</p>
+              {expandedIndex === index && (
+                <div className="question-body">
+                  <div className="answer-section">
+                    <h4>Answer:</h4>
+                    <p>{q.answer}</p>
+                  </div>
+                  <div className="meta-info">
+                    <span className="topic">{q.topic || "General"}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <p className="no-questions">No questions available for this category.</p>
+        )}
+      </div>
     </div>
   );
 }

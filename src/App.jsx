@@ -10,6 +10,14 @@ import Mocktest from "./pages/Mocktest";
 import Mockinterview from "./pages/MockInterview";
 import InterviewSummary from "./pages/InterviewSummary";
 
+// coding subpages
+import C from "./pages/coding/C";
+import Java from "./pages/coding/Java";
+import Python from "./pages/coding/Python";
+import Dsa from "./pages/coding/Dsa";
+import Algorithms from "./pages/coding/Algorithms";
+import Competitive from "./pages/coding/Competitive";
+
 import Trackme from "./pages/Trackme";
 import Contact from "./pages/Contact";
 
@@ -23,6 +31,13 @@ import Google from "./pages/interview/Google";
 import Amazon from "./pages/interview/Amazon";
 import TCS from "./pages/interview/TCS";
 import Deloitte from "./pages/interview/Deloitte";
+import Microsoft from "./pages/interview/Microsoft";
+import Zoho from "./pages/interview/Zoho";
+import Infosys from "./pages/interview/Infosys";
+import Wipro from "./pages/interview/Wipro";
+import Accenture from "./pages/interview/Accenture";
+import Cognizant from "./pages/interview/Cognizant";
+import Capgemini from "./pages/interview/Capgemini";
 
 import StartTest from "./pages/StartTest";
 import TakeTest from "./pages/TakeTest";
@@ -56,6 +71,21 @@ export default function App() {
       <Route path="/interview/amazon" element={<Amazon />} /> 
       <Route path="/interview/tcs" element={<TCS />} />
       <Route path="/interview/deloitte" element={<Deloitte />} />
+      <Route path="/interview/microsoft" element={<Microsoft />} />
+      <Route path="/interview/zoho" element={<Zoho />} />
+      <Route path="/interview/infosys" element={<Infosys />} />
+      <Route path="/interview/wipro" element={<Wipro />} />
+      <Route path="/interview/accenture" element={<Accenture />} />
+      <Route path="/interview/cognizant" element={<Cognizant />} />
+      <Route path="/interview/capgemini" element={<Capgemini />} />
+
+      {/* Coding topics */}
+      <Route path="/coding/c" element={<C />} />
+      <Route path="/coding/java" element={<Java />} />
+      <Route path="/coding/python" element={<Python />} />
+      <Route path="/coding/dsa" element={<Dsa />} />
+      <Route path="/coding/algorithms" element={<Algorithms />} />
+      <Route path="/coding/competitive" element={<Competitive />} />
 
       <Route path="/start-test" element={<StartTest />} />
       <Route path="/take-test" element={<TakeTest />} />
